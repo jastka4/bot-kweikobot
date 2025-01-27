@@ -14,11 +14,11 @@ module.exports = {
             {
               name: ":computer: Komendy",
               value:
-                "</pomoc:1333432523128307732> - Wyświetla listę dostępnych komend."
-            },
+                "</pomoc:1333432523128307732> - Wyświetla listę dostępnych komend.",
+            }
           ),
       ],
-      ephemeral: true,
+      flags: MessageFlags.Ephemeral,
     });
   },
 };
