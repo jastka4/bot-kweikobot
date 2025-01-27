@@ -31,10 +31,11 @@ Before you begin, ensure you have met the following requirements:
 
 3. **Setup Environment Variables**
 
-   Create a `.env` file in the root directory of the project and add your Discord bot token:
+   Create a `.env` file in the root directory of the project, and add your Discord bot token and Client ID/Application ID:
 
    ```env
    DISCORD_BOT_TOKEN=your-discord-bot-token
+   DISCORD_CLIENT_ID=your-discord-client-id
    ```
 
 4. **Run the Bot**
