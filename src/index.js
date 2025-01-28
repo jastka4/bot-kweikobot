@@ -11,6 +11,7 @@ const port = process.env.PORT || 3000;
 const client = new Client({ intents: [IntentsBitField.Flags.Guilds] });
 
 client.commands = new Collection();
+client.jobs = new Collection();
 
 const commandsPath = path.join(__dirname, "commands");
 const commandFiles = fs
@@ -42,6 +43,19 @@ for (const file of eventFiles) {
   } else {
     client.on(event.name, (...args) => event.execute(...args));
   }
+}
+
+const jobsPath = path.join(__dirname, "jobs");
+const jobsFiles = fs
+  .readdirSync(jobsPath)
+  .filter((file) => file.endsWith(".js"));
+
+for (const file of jobsFiles) {
+  const filePath = path.join(jobsPath, file);
+  const job = require(filePath);
+  const cronJob = job.setup(client);
+  client.jobs.set(job.name, cronJob);
+  console.log(`Loaded job: ${job.name}`);
 }
 
 client.login(process.env.DISCORD_BOT_TOKEN);
