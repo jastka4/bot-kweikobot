@@ -12,7 +12,7 @@ module.exports = {
       "0 20 * * 1,4",
       async () => {
         try {
-          const channel = await client.channels.fetch(GENERAL_CHANNEL_ID);
+          const channel = await client.channels.fetch(process.env.GENERAL_CHANNEL_ID);
           if (!channel) return console.error(`Channel not found: ${channel}`);
 
           const embed = new EmbedBuilder()
